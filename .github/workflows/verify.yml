@@ -20,11 +20,11 @@ jobs:
         nix_path: nixpkgs=channel:nixos-unstable
 
     - name: Cache Nix store
-      id: cache-nix
+      id: cache-nix-store
       uses: actions/cache@v4
       with:
-        path: /nix
-        key: ${{ runner.os }}-nix
+        path: /nix/store
+        key: ${{ runner.os }}-nix-store
 
     - name: Install dependencies
       run: nix develop --profile ./oj-env
