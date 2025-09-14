@@ -1,0 +1,21 @@
+name: verify
+
+on: push
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v5
+
+    - uses: cachix/install-nix-action@v31
+      with:
+        nix_path: nixpkgs=channel:nixos-unstable
+  
+    - name: Run tests
+      env:
+        # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # YUKICODER_TOKEN: ${{ secrets.YUKICODER_TOKEN }}
+        # GH_PAT: ${{ secrets.GH_PAT }}
+      run: oj-verify all
