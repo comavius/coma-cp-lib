@@ -15,16 +15,16 @@ jobs:
     steps:
     - uses: actions/checkout@v5
 
+    - uses: cachix/install-nix-action@v31
+      with:
+        nix_path: nixpkgs=channel:nixos-unstable
+
     - name: Cache Nix store
       id: cache-nix-store
       uses: actions/cache@v4
       with:
         path: /nix/store
         key: ${{ runner.os }}-nix-store
-
-    - uses: cachix/install-nix-action@v31
-      with:
-        nix_path: nixpkgs=channel:nixos-unstable
 
     - name: Install dependencies
       run: nix develop --profile ./oj-env
