@@ -1,5 +1,4 @@
 #include "../../common/common.cpp"
-#include <iostream>
 
 /// Lowest Common Ancestor.
 ///
